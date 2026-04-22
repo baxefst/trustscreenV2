@@ -148,14 +148,32 @@ export const GazeTrackerMediaPipe: React.FC<{ isSecure: boolean }> = ({ isSecure
   return (
     <div className="w-full flex flex-col gap-8 items-center">
       <div className={`relative w-80 aspect-video overflow-hidden transition-all duration-500 border bg-black ${borderClass}`}>
-        <video ref={videoRef} className="w-full h-full object-cover grayscale opacity-50 contrast-125" muted playsInline autoPlay />
+        <video 
+          ref={videoRef} 
+          className="w-full h-full object-cover grayscale opacity-50 contrast-125" 
+          style={{ 
+            willChange: 'transform, contents',
+            transform: 'translate3d(0,0,0)',
+            backfaceVisibility: 'hidden',
+            imageRendering: 'pixelated'
+          }}
+          muted 
+          playsInline 
+          autoPlay 
+        />
         
         {/* Overlay canvas for HR mode with cyber-audit aesthetic */}
         {isHRMode && (
           <canvas 
             ref={canvasRef}
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ mixBlendMode: 'screen', filter: 'brightness(1.2) contrast(1.1)' }}
+            style={{ 
+              mixBlendMode: 'screen', 
+              filter: 'brightness(1.2) contrast(1.1)',
+              willChange: 'transform, contents',
+              transform: 'translate3d(0,0,0)',
+              imageRendering: 'pixelated'
+            }}
           />
         )}
         

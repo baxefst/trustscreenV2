@@ -25,8 +25,8 @@ export const PreFlight: React.FC<{ onValidationComplete: () => void }> = ({ onVa
     const leftOuterCorner = landmarks[133];
     
     return leftInnerCorner && leftOuterCorner && 
-           leftInnerCorner.visibility > 0.5 && 
-           leftOuterCorner.visibility > 0.5;
+           leftInnerCorner.visibility > 0.3 && 
+           leftOuterCorner.visibility > 0.3;
   };
 
   // Shoulders validation (landmarks 11, 12)
@@ -37,8 +37,8 @@ export const PreFlight: React.FC<{ onValidationComplete: () => void }> = ({ onVa
     const rightShoulder = landmarks[12];
     
     return leftShoulder && rightShoulder && 
-           leftShoulder.visibility > 0.5 && 
-           rightShoulder.visibility > 0.5 &&
+           leftShoulder.visibility > 0.3 && 
+           rightShoulder.visibility > 0.3 &&
            leftShoulder.x > 0.1 && leftShoulder.x < 0.9 &&
            rightShoulder.x > 0.1 && rightShoulder.x < 0.9;
   };
@@ -58,11 +58,11 @@ export const PreFlight: React.FC<{ onValidationComplete: () => void }> = ({ onVa
     const faceCenterX = (leftEyeCorner.x + rightEyeCorner.x) / 2;
     const faceCenterY = noseTip.y;
     
-    // Face should be within central 60% of the frame
-    const isCenteredX = faceCenterX > 0.2 && faceCenterX < 0.8;
-    const isCenteredY = faceCenterY > 0.2 && faceCenterY < 0.8;
+    // Face should be within central 80% of the frame (expanded from 60%)
+    const isCenteredX = faceCenterX > 0.1 && faceCenterX < 0.9;
+    const isCenteredY = faceCenterY > 0.1 && faceCenterY < 0.9;
     
-    return isCenteredX && isCenteredY && noseTip.visibility > 0.5;
+    return isCenteredX && isCenteredY && noseTip.visibility > 0.3;
   };
 
   // Draw webcam preview with overlay
