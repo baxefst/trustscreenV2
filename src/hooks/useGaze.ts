@@ -21,6 +21,7 @@ export const useGaze = () => {
 
   useEffect(() => {
     const loadModels = async () => {
+      try {
         if (!window.isSecureContext) {
           console.error("Camera will not work on non-HTTPS connections!");
         }
